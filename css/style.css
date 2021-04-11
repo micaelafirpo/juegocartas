@@ -1,0 +1,355 @@
+.oculto {
+  display: none !important;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  background-image: url(../images/fondo.png);
+  *background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+header {
+  font-family: "Contrail One", cursive;
+
+  color: rgb(250, 235, 215);
+  background-color: rgba(20, 14, 24, 0.6);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+header h1 {
+  padding: 5px;
+  font-size: 40px;
+}
+.titulo {
+  padding: 5px;
+}
+section {
+  color: black;
+}
+.pantallaAnimacion {
+  background-color: rgb(20, 14, 24);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+.pantallaAnimacion .loader {
+  justify-content: center;
+  align-items: center;
+}
+.pantallaInicial {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  margin-top: 150px;
+  color: rgb(250, 235, 215);
+  *background-color: tomato;
+}
+
+.pantallaInicial__forms input {
+  background-color: rgba(20, 14, 24, 0.8);
+  color: rgb(250, 235, 215);
+}
+.pantallaInicial__boton {
+  font-family: "Contrail One", cursive;
+  font-size: 35px;
+  cursor: pointer;
+  background-color: rgb(20, 14, 24);
+  color: rgb(250, 235, 215);
+  border-radius: 50px;
+  margin-top: 15px;
+}
+
+.listaPartidas li {
+  background-color: rgb(20, 14, 24);
+  border: rgb(250, 235, 215) solid 0.4px;
+}
+
+.pantallaCartas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(250, 235, 215);
+  background-color: rgb(20, 14, 24);
+  min-width: 50px;
+  min-height: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.pantallaCartas__boton {
+  position: absolute;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  right: 30px;
+  top: 10px;
+  background-color: rgb(20, 14, 24);
+  color: rgb(250, 235, 215);
+}
+.carta {
+  margin-bottom: 50px;
+  justify-self: center;
+  align-items: center;
+  text-align: center;
+}
+
+.pantallaCartas__modal {
+  background-color: rgb(20, 14, 24);
+  color: rgb(250, 235, 215);
+}
+.pantallaCartas__modalboton {
+  font-family: "Contrail One", cursive;
+  background-color: rgb(20, 14, 24);
+  color: rgb(250, 235, 215);
+  border-radius: 50px;
+  padding: 10px;
+  margin-right: 5px;
+}
+.pantallaMatch {
+  color: rgb(250, 235, 215);
+  background-color: rgb(20, 14, 24);
+  text-align: center;
+}
+.pantallaMatch__botones {
+  font-family: "Contrail One", cursive;
+
+  padding-bottom: 20px;
+}
+.pantallaMatch__botones button {
+  color: rgb(250, 235, 215);
+  background-color: rgb(20, 14, 24);
+  text-align: center;
+  border-radius: 50px;
+  padding: 10px;
+}
+.pantallaMatchResultados h3 {
+  font-family: "Contrail One", cursive;
+
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.resultadosJugador {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  *margin: 100px;
+}
+
+.resultadosImagen {
+  margin-left: 150px;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+.resultadosImagen img {
+  border-radius: 100px;
+  *width: 100%;
+  margin-right: 10px;
+}
+.resultadosNombre {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.img-carousel {
+  border-radius: 30px;
+  width: 80%;
+  height: 50%;
+}
+.partidasAnteriores h3 {
+  font-family: "Contrail One", cursive;
+  font-size: 30px;
+}
+/*CLASES PARA LA ANIMACION */
+.loader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 200px;
+  height: 500px;
+}
+
+.dot {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0 5px;
+  height: 20px;
+  width: 2px;
+}
+
+.dot:first-of-type {
+  margin-left: 0;
+}
+
+.dot:last-of-type {
+  margin-right: 0;
+}
+
+.dot::before,
+.dot::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+  animation: helix 1.25s ease-in-out infinite;
+}
+
+.dot::after {
+  bottom: 100%;
+  animation: helix-reversed 1.25s ease-in-out infinite;
+}
+
+.dot i {
+  position: absolute;
+  z-index: 25;
+  align-self: center;
+  width: 2px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  animation: helix-bar 1.25s ease-in-out infinite;
+}
+
+.dot2::before,
+.dot2::after,
+.dot2 i {
+  animation-delay: 0.05s;
+}
+
+.dot3::before,
+.dot3::after,
+.dot3 i {
+  animation-delay: 0.1s;
+}
+
+.dot4::before,
+.dot4::after,
+.dot4 i {
+  animation-delay: 0.15s;
+}
+
+.dot5::before,
+.dot5::after,
+.dot5 i {
+  animation-delay: 0.2s;
+}
+
+.dot6::before,
+.dot6::after,
+.dot6 i {
+  animation-delay: 0.25s;
+}
+
+.dot7::before,
+.dot7::after,
+.dot7 i {
+  animation-delay: 0.3s;
+}
+
+.dot8::before,
+.dot8::after,
+.dot8 i {
+  animation-delay: 0.35s;
+}
+
+.dot9::before,
+.dot9::after,
+.dot9 i {
+  animation-delay: 0.4s;
+}
+
+@keyframes helix {
+  0% {
+    width: 5px;
+    height: 5px;
+    bottom: -5px;
+    z-index: 10;
+  }
+  25% {
+    width: 2px;
+    height: 2px;
+  }
+  50% {
+    width: 5px;
+    height: 5px;
+    bottom: 100%;
+    z-index: 20;
+  }
+  75% {
+    width: 8px;
+    height: 8px;
+  }
+  100% {
+    width: 5px;
+    height: 5px;
+    bottom: -5px;
+  }
+}
+
+@keyframes helix-reversed {
+  0% {
+    width: 5px;
+    height: 5px;
+    bottom: 100%;
+    z-index: 20;
+  }
+  25% {
+    width: 8px;
+    height: 8px;
+  }
+  50% {
+    width: 5px;
+    height: 5px;
+    bottom: -5px;
+    z-index: 10;
+  }
+  75% {
+    width: 2px;
+    height: 2px;
+  }
+  100% {
+    width: 5px;
+    height: 5px;
+    bottom: 100%;
+  }
+}
+
+@keyframes helix-bar {
+  0% {
+    height: 15px;
+  }
+  25% {
+    height: 8px;
+  }
+  50% {
+    height: 15px;
+  }
+  75% {
+    height: 8px;
+  }
+  100% {
+    height: 15px;
+  }
+}
+/* FIN CLASES PARA LA ANIMACION */
+.carousel-indicators {
+  position: absolute;
+}
+.carousel-indicators .active {
+  background-color: rgb(253, 209, 151);
+}

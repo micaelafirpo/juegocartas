@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!---Buenaas, cómo se picó ese Summer 
+        hay algunas cositas que quiero arreglar como el diseño de las cartas y no llegue, pero bueno, bastante feliz con lo que salió!--->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orphan Black | The Clone Match</title>
+    <!--BOOTSTRAP-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!--MAS METAS-->
+    <!--MIS DATITOS-->
+    <meta name="description" content="Una app de cartas con temática de Orphan Black para jugar entre dos personas y ver si hay coincidencias o no.">
+    <meta name="keywords" content="App, Match, Juego, Cartas, Orphan Black, Serie">
+    <meta name="author" content="Micaela Dato Firpo">
+    <meta name="copyright" content="Escuela DevRock || Mica 2021">  
+    <!--SR GOOGLE-->
+    <meta name="robots" content="index nofollow">
+    <!--REDES SOCIALES-->
+        <!--FACEBOOK-->
+        <meta property="og:title" content="The Clone Match">
+        <meta property="og:description" content="Una app de cartas con temática de Orphan Black para jugar entre dos personas y ver si hay coincidencias o no.">
+        <meta property="og:type" content="web">
+        <meta property="og:url" content="https://reto4-cartas.web.app/">
+        <meta property="og:image" content="https://reto4-cartas.web.app/images/favicon.jpg">
+        <!--TWITTER-->
+        <meta property="twitter:title" content="The Clone Match">
+        <meta property="twitter:description" content="Una app de cartas con temática de Orphan Black para jugar entre dos personas y ver si hay coincidencias o no.">
+        <meta property="twitter:type" content="web">
+        <meta property="twitter:url" content="https://reto4-cartas.web.app/">
+        <meta property="twitter:image" content="https://reto4-cartas.web.app/images/favicon.jpg">
+    <!----FAVICON----->
+    <link rel="shortcut icon" href="images/favicon.jpg" type="image/jpg">
+    <!---FUENTES-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+    <!--MI CSS-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="titulo"><h1>CloneMatch</h1></header>
+    <!--En esta pantalla le pedimos los nombres de los jugadores para comenzar a jugar-->
+    <section class="pantallaInicial" id="pantallaInicial">
+    <!--inicio del forms-->
+            <div class="form-floating mb-3 pantallaInicial__forms">
+                <input type="text" class="form-control" id="jugador1" placeholder="Jugador/a 1" required maxlength="15">
+                <label for="jugador1">Jugador/a 1</label>
+                <!--validacion que el campo no este vacio-->
+                <div class="valid-tooltip">Este campo está bien</div>
+                <div class="invalid-tooltip">Esta campo no está completo</div>
+            </div>
+        <div class="form-floating pantallaInicial__forms">
+            <input type="text" class="form-control" id="jugador2" placeholder="Jugador/a 2" required maxlength="15">
+            <label for="jugador2">Jugador/a 2</label>
+            <div class="valid-tooltip">Este campo está bien</div>
+            <div class="invalid-tooltip">Esta campo no está completo</div>
+        </div>
+        <button type="submit" class="btn botonJugar pantallaInicial__boton" onclick="nuevaPartida()">JUGAR</button>
+    <!--fin del forms--> 
+    <div class="partidasAnteriores oculto" id="partidasAnteriores">
+        <hr>
+        <h3>Partidas Guardadas</h3>
+        <ul class="list-group listaPartidas" id="listaPartidas">
+        </ul>
+    </div>   
+        
+    </section>
+    <section class="pantallaAnimacion oculto" id="pantallaAnimacion">
+        <div class="loader">
+            <div class="dot dot1"><i></i></div>
+            <div class="dot dot2"><i></i></div>
+            <div class="dot dot3"><i></i></div>
+            <div class="dot dot4"><i></i></div>
+            <div class="dot dot5"><i></i></div>
+            <div class="dot dot6"><i></i></div>
+            <div class="dot dot7"><i></i></div>
+            <div class="dot dot8"><i></i></div>
+            <div class="dot dot9"><i></i></div>
+        </div>
+    </section>
+    <section class="pantallaCartas oculto" id="pantallaCartas">
+        <button type="button" class="btn pantallaCartas__boton" data-bs-toggle="modal" data-bs-target="#cerrarCarousel">
+            ▼
+        </button>
+        <div id="carouselCartas" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselCartas" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselCartas" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselCartas" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselCartas" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselCartas" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselCartas" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+
+            <div class="carousel-inner carta" id="carouselCartasItem">
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselCartas"  data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselCartas"  data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="modal" id="cerrarCarousel" tabindex="-1" aria-hidden="true" >
+            <div class="modal-dialog ">
+              <div class="modal-content">
+                <div class="modal-header pantallaCartas__modal">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pantallaCartas__modal">
+                    <button type="button" data-bs-dismiss="modal" id="volverARepartir" class="pantallaCartas__modalboton">VOLVER A TIRAR</button>
+                    <button type="button" data-bs-dismiss="modal" id="verResultados" class="pantallaCartas__modalboton">VER RESULTADOS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    <section class="pantallaMatch oculto" id="pantallaMatch">
+        <div id="pantallaMatchResultados"></div>
+        <div class="pantallaMatch__botones">
+                    <button type="button" onclick="guardarYVolver()" >GUARDAR</button>
+            <button type="button" onclick="volver()">SALIR</button>
+        </div>
+
+    </section>
+
+
+<!--BOOTSTRAP-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<!--MI JS-->
+<script src="scripts/main.js"></script>
+</body>
+</html>
